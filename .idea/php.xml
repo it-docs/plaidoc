@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings />
+      <phpunit_by_deployment server_id="be467650-3fe9-4597-a5e0-847d5f4f5cdf" />
+    </phpunit_settings>
+  </component>
+</project>
