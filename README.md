@@ -1,5 +1,5 @@
-Evolution Of th standard Symfony Demo Application
-=================================================
+Evolution of the standard Symfony Demo Application
+==================================================
 
 The section "Evolution" describes the integration of a "source code documentation editor" to the standard Symfony demo application.
 The section "Symfony Demo Application" is the standard readme of the symfony demo application.
@@ -20,7 +20,7 @@ source : /home/testp1/Dev/symfony_demo/src/AppBundle/Controller/BlogController.p
     - long term and probably never : enhance the documentation process, integrating it with symfony specific feature, phpstorm ide, ticketing systems like redmine, trello and code forge sites like github (for integrated doc / code version managment).
     - long term and probably never : add value added plugins to axel to enhance editing experience
     - long term and probably never : add parsing of source code for a tighter integration with the xml content documenting the parsed source code.
-   - long term and probably never (yet really missing today): Add missing tracability between business requirements (like business specs / stories, evolution requests...), implementation code documenting, and QA test reports. Add enhanced integration of documentation of third parties components (like php / postgres / apache docs, value added tutorials found on the web...) : for example the capability to add "external links" to these third parties web documentations. Theses "external links sets" would be "project documentation centric" (not global knowledge centric : wikipedia , openclassromms and others exist for that), and defined by the project members to share and enhance knowledge in the project(s) dev team(s) on the mean / long term.
+    - long term and probably never (yet really missing today): Add missing tracability between business requirements (like business specs / stories, evolution requests...), implementation code documenting, and QA test reports. Add enhanced integration of documentation of third parties components (like php / postgres / apache docs, value added tutorials found on the web...) : for example the capability to add "external links" to these third parties web documentations. Theses "external links sets" would be "project documentation centric" (not global knowledge centric : wikipedia , openclassroom and others exist for that), and defined by the project members to share and enhance knowledge in the project(s) dev team(s) on the mean / long term.
 
 Symfony Demo Application
 ========================
