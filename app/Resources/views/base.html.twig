@@ -23,6 +23,29 @@
         #}
 
             <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+            <script type="text/javascript" src="{{ asset('js/axel/axel.js') }}"></script>
+            <link rel="stylesheet" href="{{ asset('js/axel/axel.css') }}" type="text/css">
+            <script language="JavaScript">
+                function saveCodeDoc( xmlCodeDocFile, xmlCodeDoc) {
+                    //alert("<xmlCodeDoc><xmlCodeDocFile>" + xmlCodeDocFile + "</xmlCodeDocFile>" + xmlCodeDoc + "</xmlCodeDoc>");
+
+                    $.ajax({
+                                method: "POST",
+                                url: "{{ path("save_code_doc") }}",
+                                data: "<xmlCodeDoc><xmlCodeDocFile>" + xmlCodeDocFile + "</xmlCodeDocFile>" + xmlCodeDoc + "</xmlCodeDoc>",
+                                contentType:"application/xml; charset=UTF-8",
+                                timeout:300000
+                            }).done(
+                            function( data, textStatus, jqXHR ) {
+                                alert("data : " + data + " textStatus : " + textStatus + ", responseText : " + jqXHR.responseText + " headers : " + jqXHR.getAllResponseHeaders());
+                            }
+                    ).fail(
+                            function( jqXHR, textStatus, errorThrown ) {
+                                alert( " textStatus : " + textStatus + " headers : " + jqXHR.getAllResponseHeaders() + ", responseText : " + jqXHR.responseText + ", errorThrown : " + errorThrown);
+                            }
+                    );
+                }
+            </script>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>

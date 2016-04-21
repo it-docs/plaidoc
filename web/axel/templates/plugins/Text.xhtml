@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xt="http://ns.inria.org/xtiger" xml:lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>The "text" plugin</title>
+
+    <xt:head version="1.1" templateVersion="1.0" label="Demo">
+    </xt:head>
+
+    <!-- template enrichment : extracts and generates xt:attribute and xt:use sample code -->
+    <link rel="stylesheet" type="text/css" href="../shared/demo.css" />
+    <script type="text/javascript" src="../../3rd-part/jquery/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../shared/demo.js">//</script>
+    <style type="text/css" media="screen">
+      p.empty {
+        width: 100%;
+        min-height: 2em;
+        border: inset 3px #999;
+      }
+      p.empty.axel-core-editable {
+        outline: none;
+      }
+      span.empty.inline {
+        display: inline-block;
+        width: 100%;
+        min-height: 2em;
+        border: inset 3px #999;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>The <samp>"text"</samp> plugin</h1>
+
+    <p>The <code>"text"</code> plugin is a text editing field. As a static view, it shows its content inside a <code>span</code> handle. When clicked, it replaces the handle content with an <code>input</code> or <code>textarea</code> entry field. You can specify a different handle element name by declaring it inside a <code>handle</code> attribute. The use of a custom handle element may be useful to change the look and feel of the static view wich is styled with an <code>axel-core-editable</code> class (see default styling inside <code>axel.css</code>).</p>
+    
+    <h2>Parameters</h2>
+
+    <ul class="parameters">
+      <li><var>placeholder</var> (<code><b>preserve</b>|clear|empty</code>) : when <code>preserve</code> the default content of the plugin is treated as valid user input, it can be edited by the user and will be serialized to XML, when <code>clear</code> it is removed before the user edits the field and serialized as the empty string to XML, when <code>empty</code> the default content of the plugin is not shown in the input field but it is treated as valid user input</li>
+      <li><var>noedit</var> (<code>true|<b>false</b></code>) : set it  to <code>true</code> to make the field read only (constant).</li>
+      <li><var>class</var> (<code><i>name</i></code>) : sets a class name on the handle and on the dynamical entry field</li>
+      <li><var>type</var> (<code><b>input</b>|textarea</code>) : defines the type of device to use for text entry, either an HTML <code>input</code> element or a <code>textarea</code> element</li>
+      <li><var>layout</var> (<code><b>placed</b>|float</code>) : when <code>placed</code> the text entry device will replace the handle while editing, when <code>float</code> it will fly over</li>
+      <li><var>shape</var> (<code><b>self</b>|parent</code>) : when <code>self</code> the text entry will have the same size as the handle, when <code>parent</code> it will take the size of the parent containing the handle</li>
+      <li><var>expansion</var> (<code><b>grow</b>|none</code>) : when <code>grow</code> the text entry size will be adjusted to the current text, when <code>none</code> it will not vary</li>
+      <li><var>enablelinebreak</var> (<code><b>false</b>|true</code>) : if <code>true</code> then SHIFT + RC (carriage return) will insert a newline character, note that to be visible in static view, that means the handle must be placed in a <code>pre</code> formatted block</li>
+    </ul>
+    
+    <p>You can specify a correction to the <code>shape=parent</code> parameter by adding a <kbd>-NBpx</kbd> expression at the end. This will substract NB pixels from the parent's width (e.g. <code>shape=parent-20px</code>).</p>
+
+    <h2>Default configuration</h2>
+
+    <div class="demo extract">
+      <p><xt:use types="text" label="Default">your content here</xt:use></p>
+    </div>
+    
+    <h2>With parameter <var>placeholder</var> set to <code>"clear"</code></h2>
+    
+    <div class="demo extract">
+      <p><xt:use types="text" label="ClearPlaceHolder" param="placeholder=clear">your content here</xt:use></p>
+      <p><xt:attribute types="text" name="ClearPlaceHolderAttr" param="placeholder=clear" default="your attribute content here"/></p>
+    </div>
+
+    <h2>With parameter <var>placeholder</var> set to <code>"empty"</code></h2>
+    
+    <p>Don't forget to style it so that it is visible. For that purpose you may use the <i>handle</i> parameter to generate a block-level handle, or style the handle to be an inline-block element :</p>
+
+    <div class="demo extract">
+      <div style="width:100%">
+        <xt:use types="text" handle="p" label="EmptyPlaceHolder" param="shape=parent;type=textarea;placeholder=empty;class=empty">your (empty) element content here</xt:use>
+      </div>
+      <p>
+        <xt:attribute types="text" name="EmptyPlaceHolderAttr" param="shape=parent;type=textarea;placeholder=empty;class=empty inline" default="your (empty) attribute content here"/>
+      </p>
+    </div>
+
+    <h2>With parameter <var>type</var> set to <code>"textarea"</code></h2>
+
+    <p>Observe the effects of <var>shape</var> and <var>layout</var> parameters.</p>
+
+    <div class="demo extract">
+      <p><xt:use types="text" label="TextArea" param="type=textarea;shape=self;layout=placed">your content here</xt:use></p>
+      <p><xt:use types="text" label="TextArea" param="type=textarea;shape=self;layout=float">your content here</xt:use></p>
+      <p><xt:use types="text" label="TextArea" param="type=textarea;shape=parent;layout=placed">your content here</xt:use></p>
+      <p><xt:use types="text" label="TextArea" param="type=textarea;shape=parent;layout=float">your content here</xt:use></p>
+    </div>
+
+    <h3>With <var>type</var> set to <code>"input"</code></h3>
+
+    <p>Observe the effects of <var>shape</var> and <var>layout</var> parameters.</p>
+
+    <div class="demo extract">
+      <p><xt:use types="text" label="Input" param="type=input;shape=self;layout=placed">your content here</xt:use></p>
+      <p><xt:use types="text" label="Input" param="type=input;shape=self;layout=float">your content here</xt:use></p>
+      <p><xt:use types="text" label="Input" param="type=input;shape=parent;layout=placed">your content here</xt:use></p>
+      <p><xt:use types="text" label="Input" param="type=input;shape=parent;layout=float">your content here</xt:use></p>
+    </div>
+
+    <h3>With <var>enablelinebreak</var> set to <code>"true"</code></h3>
+
+    <p>Don't forget to insert the editing field inside a &lt;pre> element to make carriage returns visible, and to hit the SHIFT key at the same time as the Return key to insert a carriage return, for instance this is the way to create a source code entry field.</p>
+
+    <div class="demo extract">
+      <pre><xt:use types="text" label="SourceCode" param="enablelinebreak=true;type=textarea;shape=parent">var i;
+for (i=0;i&lt;10;i++) {
+  window.console.log(i);
+}
+</xt:use></pre>
+  </div>
+
+      <p>The same thing using XTiger XML <code>handle</code> attribute to generate the handle as a &lt;pre> element instead of the default &lt;span> element. The only difference is that the (thin dashed) feedback around the handle of the editable area (set by a <code>.axel-core-editable</code> CSS rule in <code>axel.css</code>) will be rectangular as the handle is block level in that case.</p>
+
+      <div class="demo extract"><xt:use handle="pre" types="text" label="SourceCode" param="enablelinebreak=true;type=textarea;shape=parent">var i;
+for (i=0;i&lt;10;i++>0) {
+  window.console.log(i);
+}
+</xt:use></div>
+    
+  </body>
+</html>

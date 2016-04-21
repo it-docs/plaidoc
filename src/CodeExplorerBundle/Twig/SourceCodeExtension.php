@@ -11,6 +11,9 @@
 
 namespace CodeExplorerBundle\Twig;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 /**
  * CAUTION: this is an extremely advanced Twig extension. It's used to get the
  * source code of the controller and the template used to render the current
@@ -53,6 +56,9 @@ class SourceCodeExtension extends \Twig_Extension
         ));
     }
 
+    private function getContainer() {
+        return "";
+    }
     private function getController()
     {
         // this happens for example for exceptions (404 errors, etc.)
@@ -61,14 +67,28 @@ class SourceCodeExtension extends \Twig_Extension
         }
 
         $method = $this->getCallableReflector($this->controller);
-
+        $methodeName = $method->getName();
+        $className = $method->getDeclaringClass()->getName();
         $classCode = file($method->getFileName());
         $methodCode = array_slice($classCode, $method->getStartLine() - 1, $method->getEndLine() - $method->getStartLine() + 1);
         $controllerCode = '    '.$method->getDocComment()."\n".implode('', $methodCode);
+        $fs = new Filesystem();
+        $filePath= $method->getFileName();
+        $docPath = $fs->makePathRelative(dirname($filePath),dirname($this->kernelRootDir));
+        $urlPath = '/doc/' . $docPath;
+        $docPath = dirname($this->kernelRootDir) . '/web/doc/' . $docPath;
+        if (!file_exists($docPath)) mkdir($docPath,0777, true);
+        $docUrl = $urlPath . pathinfo($filePath, PATHINFO_FILENAME) . '.xml';
+        $docFile = $docPath . pathinfo($filePath, PATHINFO_FILENAME) . '.xml';
+        if (!file_exists($docFile)) touch ($docFile);
 
         return array(
-            'file_path' => $method->getFileName(),
-            'starting_line' => $method->getStartLine(),
+            'file_path' => $filePath,
+            'class_name' => $className,
+            'method_name' => $methodeName,
+            'doc_file' => $docFile,
+            'doc_url' => $docUrl,
+            'starting_line' => 'page : ' . $method->getStartLine(),
             'source_code' => $this->unindentCode($controllerCode)
         );
     }

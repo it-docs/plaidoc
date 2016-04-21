@@ -24,3 +24,8 @@ _errors:
 # in any environment (production, development, etc.)
 _main:
     resource: routing.yml
+
+code_explorer_routes:
+    resource: "@CodeExplorerBundle/Controller/"
+    type:     annotation
+    prefix:   /
