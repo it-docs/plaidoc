@@ -28,7 +28,6 @@
             <script language="JavaScript">
                 function saveCodeDoc( xmlCodeDocFile, xmlCodeDoc) {
                     //alert("<xmlCodeDoc><xmlCodeDocFile>" + xmlCodeDocFile + "</xmlCodeDocFile>" + xmlCodeDoc + "</xmlCodeDoc>");
-
                     $.ajax({
                                 method: "POST",
                                 url: "{{ path("save_code_doc") }}",

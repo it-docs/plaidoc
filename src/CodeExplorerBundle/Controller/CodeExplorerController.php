@@ -56,5 +56,19 @@ class CodeExplorerController extends Controller
         }
 
     }
-    
+
+    /**
+     * @Route("/editor", name="edit_code_doc")
+     * @Method("GET")
+     * @Cache(smaxage="10")
+     */
+    public function editAction(Request $request)
+    {
+
+
+            return $this->render('@CodeExplorer/template-based-editor.twig');
+
+
+    }
+
 }

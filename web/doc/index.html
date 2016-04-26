@@ -19,7 +19,7 @@
       service d'une application symfony (i.e. de son service container).</p>
       <p>intégration xdebug / phpstorm / apache -&gt; ok</p>
     </dd>
-    <dd>snapshoter (changer la conf snapshot pour pointer sur D) -&gt; ok
+    <dd>snapshoter (changer la conf snapshot pour pointer sur D) -&gt; ok 
       <p>PhpStorm / Symfony / Git / Github Integration -&gt; ok</p>
       <p>sanpshoter -&gt; ok</p>
       <p>lire Symfony Components / DependencyInjection -&gt; ok : La
@@ -71,7 +71,7 @@
               page", "Load an XML document (sample.xml) into the editor" et
               "Dump the XML document from the editor".</li>
             <li>Message de commit et push correspondant à cette version du
-              projet symfony_demo :
+              projet symfony_demo : 
               <pre>Controller code screen :
   - Changed the link to source code for this format :
 source : /home/testp1/Dev/symfony_demo/src/AppBundle/Controller/BlogController.php, class : AppBundle\Controller\BlogController, method : indexAction, page : 41 : code source and class can then be copy/pasted in phpStorm on ubuntu where the standard url based integration lead to (too) complex congiguration in ubuntu.
@@ -85,7 +85,8 @@ source : /home/testp1/Dev/symfony_demo/src/AppBundle/Controller/BlogController.p
     - long term and probably never : enhance the documentation process, integrating it with symfony specific feature, phpstorm ide, ticketing systems like redmine, trello and code forge sites like github (for integrated doc / code version managment).
     - long term and probably never : add value added plugins to axel to enhance editing experience
     - long term and probably never : add parsing of source code for a tighter integration with the xml content documenting the parsed source code.
-   - long term and probably never (yet really missing today): Add missing tracability between business requirements (like business specs / stories, evolution requests...), implementation code documenting, and QA test reports. Add enhanced integration of documentation of third parties components (like php / postgres / apache docs, value added tutorials found on the web...) : for example the capability to add "external links" to these third parties web documentations. Theses "external links sets" would be "project documentation centric" (not global knowledge centric : wikipedia , openclassromms and others exist for that), and defined by the project members to share and enhance knowledge in the project(s) dev team(s) on the mean / long term. For exemple un external link could be created from an url of a third party web page in a browser window, and stored in a project's "source file code documentation document", then browsing this third party web page may add an annotation to it with value added information for developpers of the project (the annotaion is also stored in this document), sothat when a developper browse the source file code documentation document, and from there navigate to this third party web page, the annotations for this page are loaded in together with the thrid party web page in the browser).</pre>
+    - long term and probably never (yet really missing today): Add missing tracability between business requirements (like business specs / stories, evolution requests...), implementation code documenting, and QA test reports. Add enhanced integration of documentation of third parties components (like php / postgres / apache docs, value added tutorials found on the web...) : for example the capability to add "external links" to these third parties web documentations. Theses "external links sets" would be "project documentation centric" (not global knowledge centric : wikipedia , openclassromms and others exist for that), and defined by the project members to share and enhance knowledge in the project(s) dev team(s) on the mean / long term. For exemple un external link could be created from an url of a third party web page in a browser window, and stored in a project's "source file code documentation document", then browsing this third party web page may add an annotation to it with value added information for developpers of the project (the annotaion is also stored in this document), sothat when a developper browse the source file code documentation document, and from there navigate to this third party web page, the annotations for this page are loaded in together with the thrid party web page in the browser).
+    - long term and probably never : integrate <a href="http://saxonica.com/ce/user-doc/1.1/">saxon-ce</a> and <a href="http://www.dev.abiss.gr/sarissa/">sarissa</a> with configured xsl stylsheets (HTML and FO/PDF) for live rendering of that code documentation. <a href="http://frameless.io/xslt/">Frameless</a> could be an alternative fully javascript native xslt implementation to saxon-ce (generated from java via GWT, with complexity to use with IE (integrate Sarissa)), yet commercial nowadays...</pre>
             </li>
           </ul>
         </li>
@@ -209,7 +210,7 @@ testp1@testp1-VirtualBox:~$
   <dt>Compatibilité javascript cross-browser</dt>
     <dd>Un moyen secure de code des appli js cross-browser est de n'utiliser
       que des fonctionnalité javascript standard, c'est à dire conforme à la
-      version du standard ecmascript supporté par tous les browser.
+      version du standard ecmascript supporté par tous les browser. 
       <p><a href="https://en.wikipedia.org/wiki/ECMAScript">Cette page wiki</a>
       indique quel niveau de support de quelle version d'ecmascript est incluse
       dans les versions courante des implémentations javascript de ces
@@ -225,7 +226,7 @@ testp1@testp1-VirtualBox:~$
       tutos sont parfois moins clair que ce standard...Par exemple, pour savoir
       si "new Function(...)" est éqivalent à "Function(...)" dans une
       expression, les tutos sont moin clair que le standard qui dit tous
-      simplement que oui :
+      simplement que oui : 
       <pre>15.3.1 The Function Constructor Called as a Function
 
 When Function is called as a function rather than as a constructor, it creates and initialises a new Function object. Thus the function call Function(…) is equivalent to the object creation expression new Function(…) with the same arguments.</pre>
@@ -236,7 +237,7 @@ When Function is called as a function rather than as a constructor, it creates a
   <dt>Tutos javascript et jquery</dt>
     <dd><a
       href="https://openclassrooms.com/courses/simplifiez-vos-developpements-javascript-avec-jquery">celui
-      d'openclassrooms</a>
+      d'openclassrooms</a> 
       <p><a href="http://www.w3schools.com/js/js_function_invocation.asp">tuto
       ww3schools sur les function</a></p>
       <p><a
@@ -247,13 +248,53 @@ When Function is called as a function rather than as a constructor, it creates a
     <dd><a
       href="https://learn.jquery.com/using-jquery-core/avoid-conflicts-other-libraries/">Comment
       éviter des conflit de jquery avec d'autres librairies utilisant $ comme
-      raccourci</a>
+      raccourci</a> 
       <p><a href="http://requirejs.org/">Support de la gestion de dépendances
       avec RequireJS</a></p>
     </dd>
+    <dd><a href="https://github.com/jquery/jquery/blob/master/README.md">Le
+      readme du module git jquery</a> décrit comment le fichier
+      jquery-version.js est buildé avec npm à partir des différent modules
+      dont il dépend. Cf la doc <a
+      href="https://docs.npmjs.com/getting-started/using-a-package.json">npm</a>,
+      le fichier principal de build est jquery/package.json, mais il doit
+      appeler à un moment le fichier jquery/build/tasks/build.js qui, cf son
+      commentaire, résoud les dépendances des modules standard <a
+      href="https://en.wikipedia.org/wiki/Asynchronous_module_definition">amd</a>,
+      commme le source <a
+      href="https://github.com/jquery/jquery/blob/master/src/jquery.js">jquery.js</a>,
+      en résolvant les define() (fonction de gestion de dépendances standard
+      amd), et les include/ exclude.</dd>
+    <dd><a href="http://jscc.info/">Javascript Compatibility checker</a> 
+      <p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">Doc
+      Javascript MDN</a> : c'est la meilleure doc de référence trouvée, avec
+      une déscription claire et des exemples de chaque fonctionnalités du
+      langage, la/les versions EcmaScript spécifiant cette fonctionnalité, et
+      un indicateur de compatibilité par navigateur desktop et mobile (bref le
+      nécéssaire de base pour développer...).</p>
+    </dd>
+    <dd><a
+      href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Le_mod%C3%A8le_objet_JavaScript_en_d%C3%A9tails">Description
+      détaillée du mécanisme d'héritage</a> décrivant l'utilisation de la
+      variable __proto__, et prouvant que ce mécanisme n'est pas actif par
+      défaut sur les fonctions car __proto__ vaut function() par défaut pour
+      un objet Function et pas Object.
+      <ul>
+        <li><a
+          href="http://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript">Ce
+          post</a> décrit cela de manière encore plus concise avec exemple à
+          l'appui et schéma UML</li>
+        <li>Pour encore plus de précision du mécanisme core d'héritage et
+          des autres mécanisme core d'EcmaScript, voir <a
+          href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">ici</a>
+          (attention c'est de l'ecmascript 3 et pas 5.1 à priori).</li>
+      </ul>
+    </dd>
+    <dd><a href="http://caniuse.com/">Caniuse.com</a>: Site de check de
+      compatibilité html, css, web api...</dd>
   <dt>Php doc tools</dt>
     <dd><a
-      href="http://fabien.potencier.org/sami-yet-another-php-api-documentation-generator.html">Sami</a>
+      href="http://fabien.potencier.org/sami-yet-another-php-api-documentation-generator.html">Sami</a> 
       <p><a href="https://github.com/nikic/PHP-Parser">Php parser for
       documenting purposes</a></p>
     </dd>

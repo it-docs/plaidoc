@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Template based Editor</title>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/code_explorer/template-based-editor.js') }}"></script>
+    <template id="business-request">
+        <div class="business-request">
+            <p class="template-editor-online-help" contenteditable="true">Enter you request here.</p>
+        </div>
+    </template>
+    <template id="template-template-editor-contextmenu">
+        <menu type=context id="template-editor-contextmenu">
+            <menuitem onclick="tplbEditor.addTemplate('business-request')"></menuitem>
+        </menu>
+    </template>
+</head>
+
+<body>
+<menu type=context id="template-editor-contextmenu">
+    <menuitem onclick="tplbEditor.addTemplate('business-request')">test 1</menuitem>
+</menu>
+<div class="business-request" style="border-style:solid">
+    <p class="template-editor-online-help" contenteditable="true" contextmenu="template-editor-contextmenu">Enter you request here.</p>
+</div>
+</body>

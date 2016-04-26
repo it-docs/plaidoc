@@ -22,6 +22,9 @@ source : /home/testp1/Dev/symfony_demo/src/AppBundle/Controller/BlogController.p
     - long term and probably never : add parsing of source code for a tighter integration with the xml content documenting the parsed source code.
     - long term and probably never (yet really missing today): Add missing tracability between business requirements (like business specs / stories, evolution requests...), implementation code documenting, and QA test reports. Add enhanced integration of documentation of third parties components (like php / postgres / apache docs, value added tutorials found on the web...) : for example the capability to add "external links" to these third parties web documentations. Theses "external links sets" would be "project documentation centric" (not global knowledge centric : wikipedia , openclassroom and others exist for that), and defined by the project members to share and enhance knowledge in the project(s) dev team(s) on the mean / long term.
 
+New Controller CodeExplorerController in CodeExplorerBundle :
+  - This new controller adds a very first prototype of an html5 template based pure js editor : try /xmlCodeDoc/editor
+
 Symfony Demo Application
 ========================
 
