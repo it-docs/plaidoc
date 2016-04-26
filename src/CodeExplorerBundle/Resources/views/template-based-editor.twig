@@ -20,9 +20,10 @@
 
 <body>
 <menu type=context id="template-editor-contextmenu">
-    <menuitem onclick="tplbEditor.addTemplate('business-request')">test 1</menuitem>
+    <menuitem onclick="tplbEditor.addTemplate('business-request')">Ajouter une demande</menuitem>
+    <menuitem onclick="tplbEditor.selectParent()">Selectionner le parent</menuitem>
 </menu>
-<div class="business-request" style="border-style:solid">
+<div class="business-request" style="border-style:solid" contextmenu="template-editor-contextmenu">
     <p class="template-editor-online-help" contenteditable="true" contextmenu="template-editor-contextmenu">Enter you request here.</p>
 </div>
 </body>

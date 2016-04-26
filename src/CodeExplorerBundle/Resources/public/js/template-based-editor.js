@@ -13,15 +13,24 @@
         return this;
     };
     tplbEditor.addTemplate = function (templateId) {
+        var evt = ctxMenuEvt;
+        var currentNode = $(evt.target);
+        if (tplbEditor.selectedNode) currentNode = tplbEditor.selectedNode;
         var template = document.querySelector('#' + templateId);
         var clone = template.content.cloneNode(true);
-        $('div',clone).attr('style','border-style:solid');
+        //$('div',clone).attr('style','border-style:solid');
         $('div',clone).attr('contextmenu','template-editor-contextmenu');
-        document.body.appendChild(clone);
+        currentNode.append(clone);
+        if (tplbEditor.selectedNode) {
+            $(tplbEditor.selectedNode).css('background-color','');
+            tplbEditor.selectedNode=null;
+        }
     };
-    tplbEditor.tutu = function () {
-        alert('tutu');
-        return this;
+    tplbEditor.selectParent = function () {
+        var evt = ctxMenuEvt;
+        var par = $(evt.target).parent();
+        par.css('background-color','yellow');
+        tplbEditor.selectedNode=par;
     };
     init.prototype = tplbEditor.fn;
     window.tplbEditor=tplbEditor;
