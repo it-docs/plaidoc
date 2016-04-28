@@ -25,11 +25,15 @@ source : /home/testp1/Dev/symfony_demo/src/AppBundle/Controller/BlogController.p
 New Controller CodeExplorerController in CodeExplorerBundle :
   - This new controller adds a very first prototype of an html5 template based pure js editor : try /xmlCodeDoc/editor
 
-KO Test of Assetic, and Code Editor Very Early Prototype enhancements : (so called now "Codoc" "VEP" )  :
- - test of assetic : commented as it doesn't work : details in french :
-         - Assetic est bugué pour le moment : après 1 journée de tentatives diverses, les fichier "ouput" des blocs twig "javascipts" et "stylesheet" tel que décrit dans les best practices ne sont pas dumper tel que décrit dans ces best practices, malgrè les nettoyage de cache et autre disable/enable du controller assetic tel que préconnisé dans les post sur google, bcp de post de signalement de ce bug sans réponse de solution qui a marché....
-         - Code doc editor (nickname "codoc") :
-         - very early prototyping of an editing context menu that can be triggered by a specific keyboard event ("Ctrl <anychar>" in this proto version...). The context menu is displayed where the mouse is to minimise mouse use. The menu items can be be navigated with keyboard arrows and enter to trigger the item action, sothat this menu can be totaly used either by the mouse or by the mouse or the keyboard, enabling fast "au ... (show balloon)
+KO Test of Assetic, and Code Editor Very Early Prototype enhancements (so called now "Codoc" "VEP" )  :
+ - Test of assetic : commented as it doesn't work : details in french :
+   - Assetic est bugué pour le moment : après 1 journée de tentatives diverses, les fichier "ouput" des blocs twig "javascipts" et "stylesheet" tel que décrit dans les best practices ne sont pas dumper tel que décrit dans ces best practices, malgrè les nettoyage de cache et autre disable/enable du controller assetic tel que préconnisé dans les post sur google, bcp de post de signalement de ce bug sans réponse de solution qui a marché....
+ - Code doc editor (nickname "codoc") :
+   - Very early prototyping of an editing context menu that can be triggered by a specific keyboard event ("Ctrl <anychar>" in this proto version...).
+     The context menu is displayed where the mouse is to minimise mouse use.
+     The menu items can be be navigated with keyboard arrows and enter to trigger the item action, sothat this menu can be totaly used either by the mouse or by the mouse or the keyboard, enabling fast "au fil de l'eau" authoring of the document content and structure whithout mouse interruption (this encourage to write more doc for the same time, which is a real issue for software documenting ;).
+   - The jquery plugin contextMenu plugin (https://swisnl.github.io/jQuery-contextMenu) has been integrated for that.
+ - Symfony demo little fix : the cache of classe in app_dev.php has been commented, as it was not consistent with the code examples to disable class caching given in the best practices documentation.
 
 Symfony Demo Application
 ========================
