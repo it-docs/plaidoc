@@ -203,6 +203,26 @@ testp1@testp1-VirtualBox:~$
       <p><a href="http://symfony.com/doc/2.8/cookbook/index.html">Symfony 2.8
       CookBook</a></p>
       <p><a href="https://help.github.com/">Aide en ligne Github</a></p>
+      <p>Assetic docs : (Assetic est bugué pour le moment : après 1 journée
+      de tentatives diverses, les fichier "ouput" des blocs twig "javascipts"
+      et "stylesheet" tel que décrit dans les best practices ne sont pas
+      dumper tel que décrit dans ces best practices, malgrè les nettoyage de
+      cache et autre disable/enable du controller assetic tel que préconnisé
+      dans les post sur google, bcp de post de signalement de ce bug sans
+      réponse de solution qui a marché...).</p>
+    </dd>
+    <dd><a href="https://github.com/kriswallsmith/assetic">Official assetic
+      documentation</a>
+      <p><a
+      href="http://symfony.com/doc/2.8/components/asset/index.html">Symfony
+      asset component</a></p>
+      <p><a
+      href="http://symfony.com/doc/2.8/best_practices/web-assets.html">Symfony
+      asset managment best practices</a></p>
+      <p><a
+      href="http://symfony.com/doc/2.8/cookbook/assetic/asset_management.html">Symfony
+      asset managment with assetic cookbook</a></p>
+      <p></p>
     </dd>
   <dt>Doc de référence php</dt>
     <dd><a href="http://php.net/manual/fr/wrappers.php.php">Flux php (pour
@@ -278,7 +298,7 @@ When Function is called as a function rather than as a constructor, it creates a
       détaillée du mécanisme d'héritage</a> décrivant l'utilisation de la
       variable __proto__, et prouvant que ce mécanisme n'est pas actif par
       défaut sur les fonctions car __proto__ vaut function() par défaut pour
-      un objet Function et pas Object.
+      un objet Function et pas Object. 
       <ul>
         <li><a
           href="http://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript">Ce
@@ -292,6 +312,12 @@ When Function is called as a function rather than as a constructor, it creates a
     </dd>
     <dd><a href="http://caniuse.com/">Caniuse.com</a>: Site de check de
       compatibilité html, css, web api...</dd>
+    <dd><a
+      href="http://stackoverflow.com/questions/1033004/keyboard-events-for-child-elements-in-a-contenteditable-div">Fonctionalités
+      js/dom pour l'edition de contenus html dans le browser</a> : cette page
+      explique comment utiliser des evt clavier, et que les evt clavier
+      fonction sur le span et div et body, mais pas à priori sur les p
+      d'après mes test.</dd>
   <dt>Php doc tools</dt>
     <dd><a
       href="http://fabien.potencier.org/sami-yet-another-php-api-documentation-generator.html">Sami</a> 
