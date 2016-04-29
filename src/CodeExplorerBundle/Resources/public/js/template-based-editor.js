@@ -13,8 +13,14 @@
         return this;
     };
     tplbEditor.onClick = function (evt) {
-        tplbEditor.pageX=evt.pageX;
-        tplbEditor.pageY=evt.pageY;
+        //this check if it is a click on a context menu item (or a descendant element of the item like a span...), and if yes does nothing as the focusNode does not change in this case.
+        var isMenuItem=$(evt.target).closest('.context-menu-item').length;
+        if (!isMenuItem) {
+        tplbEditor.pageX = evt.pageX;
+        tplbEditor.pageY = evt.pageY;
+        tplbEditor.removeSelection();
+        tplbEditor.selectedNode = $(document.getSelection().focusNode);
+        }
     };
     tplbEditor.onKeyPress = function (evt) {
         /* this test that alt-arrow and ctrl-alt-arrow keys do not trigger significant firfox browser behavior so they can be used to trigger the most common authoring feauture :
