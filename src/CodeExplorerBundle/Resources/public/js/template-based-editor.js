@@ -185,7 +185,7 @@ jQuery( document ).ready(function() {
                                         },
                                         callback: function(){
                                             tplbEditor.addTemplate('business-request');
-                                            alert('Prototype level implemented : will insert a new business request template at the current position : a new editable business request template should appear in the document. You can also try the shortcut Alt-down that will display, in this proto, the global context menu at the mouse position and later only this sub menu.');
+                                            alert('Prototype level implemented : will insert a new business request template at the current position : a new editable business request template should appear in the document. You can also try the shortcut Alt-down that will display, in this proto, this global context menu at the mouse position. In a later version, it will only display this template insertion sub menu.');
                                         }
                                     },
                                     "business-request-ref": {

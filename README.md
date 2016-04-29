@@ -1,7 +1,7 @@
 Evolution of the standard Symfony Demo Application
 ==================================================
 
-The section "Evolution" describes the integration of a "source code documentation editor" to the standard Symfony demo application.
+The section "Evolution history" describes the integration of a "source code documentation editor" to the standard Symfony demo application.
 The section "Symfony Demo Application" is the standard readme of the symfony demo application.
 
 Evolutions history
@@ -14,9 +14,12 @@ source : /home/testp1/Dev/symfony_demo/src/AppBundle/Controller/BlogController.p
   TODO :
     - mean term : template is default (Page), add managment of customer templates configuration and "symfony framework feature specific" elements (same with apache and postresgl features) : for example add dynamic template extensions or full generations, based on the project or vendor bundle controller names, doctrine entities / repositories names and so on...
     - short term : check axel capability of templates with html links in text.
+      - status : axel project seems in standby and UI is not up to date with todays browser capabilities : a very early prototype of a JQuery/HTML5 template based editor has been started : code name "plaidoc" editor for "pla"tform "i"ntegrated "doc"umentation.
     - short term (level 1) and mean term (level 2) : manage templates and code documents in postgresql database : two (non mutualy exclusive) level of granularity : 1 : store xml documents "as is" in a db text field (so querying the xml with other db field is not possible yet full text postgres search in the xml documents are possible, and update is only possible at document level with the editor); 2 : store and manage xml document elements in db text fields, so everything is possible yet performance becomes an issue.
     - short term : refactor with asset component the coding of url/routes of axel's js asset and xml code documents.
+      - status : see below assetic test is KO : next step is to integrate GruntJS (via NodeJS).
     - short term : make the needed refactoring to provide this documenting solution with axel integration, a bundle providing a "symfony project documenting service" (starting by managing axel js library version with composer).
+      - status : not started
     - long term and probably never : enhance the documentation process, integrating it with symfony specific feature, phpstorm ide, ticketing systems like redmine, trello and code forge sites like github (for integrated doc / code version managment).
     - long term and probably never : add value added plugins to axel to enhance editing experience
     - long term and probably never : add parsing of source code for a tighter integration with the xml content documenting the parsed source code.
