@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data/>
+<div>
+  <h1>test titre page</h1>
+  <div>
+    <p>
+      <span>test para</span>
+    </p>
+    <ul>
+      <li>
+        <span>tt ttt</span>
+      </li>
+      <li>
+        <span>list item a</span>
+      </li>
+      <li>
+        <span>list item b</span>
+      </li>
+    </ul>
+    <ol>
+      <li>
+        <span>li 1</span>
+      </li>
+      <li>
+        <span>li 2</span>
+      </li>
+    </ol>
+    <h2>test titre 2</h2>
+  </div>
+</div>

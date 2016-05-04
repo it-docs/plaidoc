@@ -12,7 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use DOMDocument;
-use Symfony\Component\Validator\Constraints\True;
+use DOMXPath;
+use CodeExplorerBundle\Entity\SymfonyControllerElement;
 
 /**
  * Controller used to save source file documentation.
@@ -67,6 +68,50 @@ class CodeExplorerController extends Controller
 
 
             return $this->render('@CodeExplorer/template-based-editor.twig');
+
+
+    }
+
+    /**
+     * @Route("/store", name="store_code_doc")
+     * @Method("POST")
+     * @Cache(smaxage="10")
+     */
+    public function storeAction(Request $request)
+    {
+        //TODO : implement me :
+        //??store doc element??, and then :
+        try {
+            $res=null;
+            $content = file_get_contents('php://input');
+            $doc = new DOMDocument("1.0", "UTF-8");
+            $doc->loadXML($content);
+            $srcRelativePath = $doc->getElementsByTagName('srcRelativePath')[0]->textContent;
+            $class_name = $doc->getElementsByTagName('class_name')[0]->textContent;
+            $method_name = $doc->getElementsByTagName('method_name')[0]->textContent;
+            $starting_line = $doc->getElementsByTagName('starting_line')[0]->textContent;
+            $ending_line = $doc->getElementsByTagName('ending_line')[0]->textContent;
+            $xpath = new DOMXpath($doc);
+            $codeDocContent = $xpath->query('content/*')[0];
+            $content = $doc->saveXML($codeDocContent);
+            $docElement = new SymfonyControllerElement();
+            $docElement->setContent($content);
+            $docElement->setClassName($class_name);
+            $docElement->setMethodName($method_name);
+            $docElement->setMethodLineStart($starting_line);
+            $docElement->setMethodLineEnd($ending_line);
+            $docElement->setGitSourceUrl(SymfonyControllerElement::GIT_SRC_REPO . '/' . $srcRelativePath . '#L' . $starting_line);
+            $em = $this->getDoctrine()->getEntityManager('plaidoc');
+            $em->persist($docElement);
+            $em->flush();
+            $response = new Response("<OK>document has been saved.</OK>", 200, array('Content-Type'=> 'application/xml; charset=UTF-8'));
+            $response->setCharset("UTF-8");
+            return $response;
+        } catch (\Exception $e) {
+            return new Response("<KO>Exception : code : {$e->getCode()} : {$e->getMessage()}</KO>",500,array('Content-Type'=> 'application/xml; charset=UTF-8'));
+        } catch (\Error $e) {
+            return new Response("<KO>Exception : code : {$e->getCode()} : {$e->getMessage()}</KO>",500,array('Content-Type'=> 'application/xml; charset=UTF-8'));
+        }
 
 
     }

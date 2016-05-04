@@ -75,6 +75,7 @@ class SourceCodeExtension extends \Twig_Extension
         $fs = new Filesystem();
         $filePath= $method->getFileName();
         $docPath = $fs->makePathRelative(dirname($filePath),dirname($this->kernelRootDir));
+        $srcRelativePath = $docPath . basename($filePath);
         $urlPath = '/doc/' . $docPath;
         $docPath = dirname($this->kernelRootDir) . '/web/doc/' . $docPath;
         if (!file_exists($docPath)) mkdir($docPath,0777, true);
@@ -84,11 +85,13 @@ class SourceCodeExtension extends \Twig_Extension
 
         return array(
             'file_path' => $filePath,
-            'class_name' => $className,
+            'class_name' => addslashes($className),
             'method_name' => $methodeName,
             'doc_file' => $docFile,
             'doc_url' => $docUrl,
-            'starting_line' => 'page : ' . $method->getStartLine(),
+            'srcRelativePath' => $srcRelativePath,
+            'starting_line' => $method->getStartLine(),
+            'ending_line' => $method->getEndLine(),
             'source_code' => $this->unindentCode($controllerCode)
         );
     }

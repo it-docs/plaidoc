@@ -26,6 +26,11 @@
             <script type="text/javascript" src="{{ asset('js/axel/axel.js') }}"></script>
             <link rel="stylesheet" href="{{ asset('js/axel/axel.css') }}" type="text/css">
             <script language="JavaScript">
+                function editCodeDoc(xmlCodeDocUrl) {
+                    //alert('editing : ' + xmlCodeDocUrl);
+                    $axel('#controller-doc').transform('/axel/templates/samples/HtmlPage.xhtml', { bundlesPath : '/js/axel/bundles', enableTabGroupNavigation: true });
+                    $axel('#controller-doc').load(xmlCodeDocUrl);
+                }
                 function saveCodeDoc( xmlCodeDocFile, xmlCodeDoc) {
                     //alert("<xmlCodeDoc><xmlCodeDocFile>" + xmlCodeDocFile + "</xmlCodeDocFile>" + xmlCodeDoc + "</xmlCodeDoc>");
                     $.ajax({
@@ -35,6 +40,23 @@
                                 contentType:"application/xml; charset=UTF-8",
                                 timeout:300000
                             }).done(
+                            function( data, textStatus, jqXHR ) {
+                                alert("data : " + data + " textStatus : " + textStatus + ", responseText : " + jqXHR.responseText + " headers : " + jqXHR.getAllResponseHeaders());
+                            }
+                    ).fail(
+                            function( jqXHR, textStatus, errorThrown ) {
+                                alert( " textStatus : " + textStatus + " headers : " + jqXHR.getAllResponseHeaders() + ", responseText : " + jqXHR.responseText + ", errorThrown : " + errorThrown);
+                            }
+                    );
+                }
+                function storeCodeDoc(docElementContent, srcRelativePath, class_name, method_name, starting_line, ending_line ) {
+                    $.ajax({
+                        method: "POST",
+                        url: "{{ path("store_code_doc") }}",
+                        data: "<xmlCodeDoc><metadata>" + "<srcRelativePath>" + srcRelativePath + "</srcRelativePath>" + "<class_name>" + class_name + "</class_name>" + "<method_name>" + method_name + "</method_name>" + "<starting_line>" + starting_line + "</starting_line>" + "<ending_line>" + ending_line + "</ending_line>" + "</metadata><content>" + docElementContent + "</content></xmlCodeDoc>",
+                        contentType:"application/xml; charset=UTF-8",
+                        timeout:300000
+                    }).done(
                             function( data, textStatus, jqXHR ) {
                                 alert("data : " + data + " textStatus : " + textStatus + ", responseText : " + jqXHR.responseText + " headers : " + jqXHR.getAllResponseHeaders());
                             }

@@ -38,6 +38,28 @@ KO Test of Assetic, and Code Editor Very Early Prototype enhancements (so called
    - The jquery plugin contextMenu plugin (https://swisnl.github.io/jQuery-contextMenu) has been integrated for that.
  - Symfony demo little fix : the cache of classe in app_dev.php has been commented, as it was not consistent with the code examples to disable class caching given in the best practices documentation.
 
+Bug fix of axel editor integration :
+ - the edited static xml resource was not updated in the editor : added  a FileMatch in web/.htaccess (and also src/.htaccess) to avoid caching of such resources (xml, html...)
+
+Bug fix of the template base editor prototype (so not the axel one, the other):
+ - the contextMenu css and js files have not been commited in the last run wher thei contexteMenu had been integrated
+
+Very early prototype of code document storage in postgres database via doctrine :
+ - a very early data model diagram of document element stored in the database has been done : look the html document web/doc/PlaiDocModele.xhtml
+ - a new  axel template HtmlPage.xhtml has been  derived from the Page.xhtml template to store the content of these document element as (x)html.
+   - the compressed axel.js library as been modified directly for that : find and replaced "Fragment" by "span" sothta axel output text fragments as "span" elements and not "Fragments" element as it is not an html element.
+ - creation of a part of the doctrine entities and attributes of the web/doc/PlaiDocModele.xhtml data model : the hierarchies DocElement -> ImplementationElement -> SymfonyControllerElement, and DocElement -> BusinessRequestElement
+   - See folder src/CodeExplorerBundle/Entity
+ - add of a link "Store in plaidoc" in the source code screen to store the document element edited with axel in this doctrine/database schema.
+   - see changes in sources :
+     - source_code.html.twig : added this new link
+     - base.html.twig : add of ajax request storeCodeDoc() to send the document element to store
+     - config.yml : add of a specific 'plaidoc' connection to the postgres database, and a specific 'plaidoc' entity manager to manage the documentElement entities in this postgres db and not in the defaut symfon_demo sqllite db.
+     - SourceCodeExtension.php : added/changed the needed SymfonyControllerElement attributes : srcRelativePath, starting_line, ending_line (to build the git url of the controller in the git repository)
+     - CodeExplorerController : add of the storeAction that creates the doctrine entities and store them in the database
+
+Add of element in the project documentation, namely web resources about doctrine : web/doc/index.html
+
 Symfony Demo Application
 ========================
 

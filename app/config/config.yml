@@ -73,15 +73,37 @@ assetic:
 # Doctrine Configuration (used to access databases and manipulate their information)
 doctrine:
     dbal:
+      default_connection: default
+      connections:
+          default:
         # instead of configuring the database access options in this file, we pull
         # them from the app/config/parameters.yml file. The reason is that config.yml
         # stores options that change the application behavior and parameters.yml
         # stores options that change from one server to another
-        url: "%database_url%"
-
+            url: "%database_url%"
+          plaidoc:
+            driver : "%database_driver_plaidoc%"
+            host : "%database_host_plaidoc%"
+            port : "%database_port_plaidoc%"
+            dbname : "%database_name_plaidoc%"
+            user : "%database_user_plaidoc%"
+            password : "%database_password_plaidoc%"
+            charset : "%database_charset_plaidoc%"
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+      auto_generate_proxy_classes: "%kernel.debug%"
+      default_entity_manager: default
+      entity_managers:
+        default:
+          connection: default
+          auto_mapping: true
+        plaidoc:
+          connection: plaidoc
+          mappings:
+            CodeExplorerBundle: ~
+#                mapping: true
+#              type: 'annotation'
+
+
 
 # Swiftmailer Configuration (used to send emails)
 swiftmailer:
