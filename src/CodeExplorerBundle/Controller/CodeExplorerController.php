@@ -3,6 +3,7 @@
 
 namespace CodeExplorerBundle\Controller;
 
+use CodeExplorerBundle\CodeExplorerBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -94,14 +95,17 @@ class CodeExplorerController extends Controller
             $xpath = new DOMXpath($doc);
             $codeDocContent = $xpath->query('content/*')[0];
             $content = $doc->saveXML($codeDocContent);
-            $docElement = new SymfonyControllerElement();
+            $em = $this->getDoctrine()->getEntityManager('plaidoc');
+            $docRep = $em->getRepository('CodeExplorerBundle:SymfonyControllerElement');
+            $docElement=$docRep->findOneBy(array('className' => $class_name, 'methodName' => $method_name),array('id' => 'desc'),1);
+            if (!$docElement)
+                $docElement = new SymfonyControllerElement();
             $docElement->setContent($content);
             $docElement->setClassName($class_name);
             $docElement->setMethodName($method_name);
             $docElement->setMethodLineStart($starting_line);
             $docElement->setMethodLineEnd($ending_line);
             $docElement->setGitSourceUrl(SymfonyControllerElement::GIT_SRC_REPO . '/' . $srcRelativePath . '#L' . $starting_line);
-            $em = $this->getDoctrine()->getEntityManager('plaidoc');
             $em->persist($docElement);
             $em->flush();
             $response = new Response("<OK>document has been saved.</OK>", 200, array('Content-Type'=> 'application/xml; charset=UTF-8'));
