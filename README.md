@@ -60,6 +60,8 @@ Very early prototype of code document storage in postgres database via doctrine 
 
 Add of element in the project documentation, namely web resources about doctrine : web/doc/index.html
 
+Add of this line in this readme to check pull request with another repository.
+
 Symfony Demo Application
 ========================
 
